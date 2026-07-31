@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/marks")
-@CrossOrigin(origins = "http://10.9.70.153:8082")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class StudentMarkController {
 
     @Autowired
