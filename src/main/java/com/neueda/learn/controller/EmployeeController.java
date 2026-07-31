@@ -13,6 +13,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/employees")
+@CrossOrigin(origins = "http://10.9.70.153:8082")
 public class EmployeeController
 {
     @Autowired
