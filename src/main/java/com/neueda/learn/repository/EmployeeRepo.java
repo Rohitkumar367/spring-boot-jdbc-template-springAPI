@@ -18,7 +18,7 @@ public class EmployeeRepo
 
     //get All Employees
     public List<Employee> getAllEmployees() {
-        String sql="SELECT * FROM employee";
+        String sql="SELECT * FROM employees";
         return jdbcTemplate.query(
                 sql,new BeanPropertyRowMapper<>(Employee.class)
         );
@@ -27,7 +27,7 @@ public class EmployeeRepo
 
     // Save Employee
     public Employee saveEmployee(Employee employee) {
-        String sql = "INSERT INTO employee (name, department, salary) VALUES (?,?,?)";
+        String sql = "INSERT INTO employees (name, department, salary) VALUES (?,?,?)";
         int result = jdbcTemplate.update(
                 sql,
                 employee.getName(),
@@ -43,18 +43,18 @@ public class EmployeeRepo
     //get Employee by ID
     public Employee getEmployeeById(int id)
     {
-        String sql = "SELECT * FROM employee WHERE id = ?";
+        String sql = "SELECT * FROM employees WHERE id = ?";
 
         try{
             return jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<>(Employee.class),id);
         }catch(EmptyResultDataAccessException e){
-            throw new EmployeeNotFoundException("Employee with id " + id + " not found");
+            throw new EmployeeNotFoundException("Employees with id " + id + " not found");
         }
     }
 
     // update Employee
     public Employee updateEmployee(int id, Employee employee) {
-        String sql = "UPDATE employee SET name = ?, department = ?, salary = ? WHERE id = ?";
+        String sql = "UPDATE employees SET name = ?, department = ?, salary = ? WHERE id = ?";
         int result = jdbcTemplate.update(
                 sql,
                 employee.getName(),
@@ -70,7 +70,7 @@ public class EmployeeRepo
 
     // delete Employee
     public int deleteEmployee(int id) {
-        String sql = "DELETE FROM employee WHERE id = ?";
+        String sql = "DELETE FROM employees WHERE id = ?";
         int result = jdbcTemplate.update(sql, id);
         if (result > 0) {
             return 1;
