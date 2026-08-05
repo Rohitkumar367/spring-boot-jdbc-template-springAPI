@@ -15,17 +15,19 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    // READ ALL
+    @GetMapping
+    public List<Student> getAllStudents() {
+        return studentService.getAllStudents();
+    }
+
     // CREATE
     @PostMapping
     public Student addStudent(@RequestBody Student student) {
         return studentService.addStudent(student);
     }
 
-    // READ ALL
-    @GetMapping
-    public List<Student> getAllStudents() {
-        return studentService.getAllStudents();
-    }
+
 
     // READ BY ID
     @GetMapping("/{id}")

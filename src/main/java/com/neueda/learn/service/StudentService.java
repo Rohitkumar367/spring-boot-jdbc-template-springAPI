@@ -13,15 +13,17 @@ public class StudentService {
     @Autowired
     private StudentRepo studentRepo;
 
+    // READ ALL
+    public List<Student> getAllStudents() {
+        return studentRepo.getAllStudents();
+    }
+
+
     // CREATE
     public Student addStudent(Student student) {
         return studentRepo.addStudent(student);
     }
 
-    // READ ALL
-    public List<Student> getAllStudents() {
-        return studentRepo.getAllStudents();
-    }
 
     // READ BY ID
     public Student getStudentById(int id) {

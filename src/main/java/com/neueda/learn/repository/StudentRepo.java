@@ -14,6 +14,17 @@ public class StudentRepo
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    // READ ALL
+    public List<Student> getAllStudents() {
+
+        String sql = "SELECT * FROM student";
+
+        return jdbcTemplate.query(
+                sql,
+                new BeanPropertyRowMapper<>(Student.class)
+        );
+    }
+
     // add Student
     public Student addStudent(Student student) {
 
@@ -32,17 +43,6 @@ public class StudentRepo
             return student;
         }
         return null;
-    }
-
-    // READ ALL
-    public List<Student> getAllStudents() {
-
-        String sql = "SELECT * FROM student";
-
-        return jdbcTemplate.query(
-                sql,
-                new BeanPropertyRowMapper<>(Student.class)
-        );
     }
 
     // READ BY ID
